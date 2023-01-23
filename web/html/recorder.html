@@ -1,0 +1,221 @@
+<script src="recorder.js"></script>
+
+<!-- stt -->
+<section class="bg-light w-100">
+    <div class="container">
+        <div class="row d-flex align-items-center py-5">
+            <div class="col-lg-6 text-start">
+                <h1 class="h2 py-5 text-primary typo-space-line">Test STT</h1>
+                <p class="light-300">
+		<div>
+                    <div style="display: table; margin: auto;border:1px solid gray;padding-right:20px;">
+		      &nbsp; <b>STT Response: </b><span id=theResult></span>
+		      <br/>
+  		      &nbsp; <b>Took: </b><span id=stt_timer>0</span>ms
+		      <br/><br/>
+		      <form name=bogus id=bogus>
+		      &nbsp; <b>Language:</b> 
+		      <!-- <input type=text size=2 id=lang> -->
+		      &nbsp; <select id=lang>
+
+                              <option>Afrikaans</option>
+                              <option>Albanian</option>
+                              <option>Amharic</option>
+                              <option>Arabic</option>
+                              <option>Armenian</option>
+                              <option>Assamese</option>
+                              <option>Azerbaijani</option>
+                              <option>Bashkir</option>
+                              <option>Basque</option>
+                              <option>Belarusian</option>
+                              <option>Bengali</option>
+                              <option>Bosnian</option>
+                              <option>Breton</option>
+                              <option>Bulgarian</option>
+                              <option>Burmese</option>
+                              <option>Castilian</option>
+                              <option>Catalan</option>
+                              <option>Chinese</option>
+                              <option>Croatian</option>
+                              <option>Czech</option>
+                              <option>Danish</option>
+                              <option>Dutch</option>
+                              <option selected>English</option>
+                              <option>Estonian</option>
+                              <option>Faroese</option>
+                              <option>Finnish</option>
+                              <option>Flemish</option>
+                              <option>French</option>
+                              <option>Galician</option>
+                              <option>Georgian</option>
+                              <option>German</option>
+                              <option>Greek</option>
+                              <option>Gujarati</option>
+                              <option>Haitian</option>
+                              <option>Haitian 
+                              <option>Creole</option>
+                              <option>Hausa</option>
+                              <option>Hawaiian</option>
+                              <option>Hebrew</option>
+                              <option>Hindi</option>
+                              <option>Hungarian</option>
+                              <option>Icelandic</option>
+                              <option>Indonesian</option>
+                              <option>Italian</option>
+                              <option>Japanese</option>
+                              <option>Javanese</option>
+                              <option>Kannada</option>
+                              <option>Kazakh</option>
+                              <option>Khmer</option>
+                              <option>Korean</option>
+                              <option>Lao</option>
+                              <option>Latin</option>
+                              <option>Latvian</option>
+                              <option>Letzeburgesch</option>
+                              <option>Lingala</option>
+                              <option>Lithuanian</option>
+                              <option>Luxembourgish</option>
+                              <option>Macedonian</option>
+                              <option>Malagasy</option>
+                              <option>Malay</option>
+                              <option>Malayalam</option>
+                              <option>Maltese</option>
+                              <option>Maori</option>
+                              <option>Marathi</option>
+                              <option>Moldavian</option>
+                              <option>Moldovan</option>
+                              <option>Mongolian</option>
+                              <option>Myanmar</option>
+                              <option>Nepali</option>
+                              <option>Norwegian</option>
+                              <option>Nynorsk</option>
+                              <option>Occitan</option>
+                              <option>Panjabi</option>
+                              <option>Pashto</option>
+                              <option>Persian</option>
+                              <option>Polish</option>
+                              <option>Portuguese</option>
+                              <option>Punjabi</option>
+                              <option>Pushto</option>
+                              <option>Romanian</option>
+                              <option>Russian</option>
+                              <option>Sanskrit</option>
+                              <option>Serbian</option>
+                              <option>Shona</option>
+                              <option>Sindhi</option>
+                              <option>Sinhala</option>
+                              <option>Sinhalese</option>
+                              <option>Slovak</option>
+                              <option>Slovenian</option>
+                              <option>Somali</option>
+                              <option>Spanish</option>
+                              <option>Sundanese</option>
+                              <option>Swahili</option>
+                              <option>Swedish</option>
+                              <option>Tagalog</option>
+                              <option>Tajik</option>
+                              <option>Tamil</option>
+                              <option>Tatar</option>
+                              <option>Telugu</option>
+                              <option>Thai</option>
+                              <option>Tibetan</option>
+                              <option>Turkish</option>
+                              <option>Turkmen</option>
+                              <option>Ukrainian</option>
+                              <option>Urdu</option>
+                              <option>Uzbek</option>
+                              <option>Valencian</option>
+                              <option>Vietnamese</option>
+                              <option>Welsh</option>
+                              <option>Yiddish</option>
+			      <option>Yoruba</option>
+
+		      </select>
+		      &nbsp; &nbsp; &nbsp; &nbsp; 
+		      <b>Quality:</b>
+		      <select id=quality>
+			      <option selected=selected>fast</option>
+			      <option>normal</option>
+			      <option>better</option>
+			      <option>best</option>
+			      <option>xcribe</option>
+			      <option>xcribe2</option>
+		      </select>
+		      </form>
+		      <br/><br/>
+                      <p style="padding-left:120px;">
+                        <button id="btnStart" style="background-color:light-gray;">Start Recording</button>
+                      </p>
+		      <p style="padding-left:20px;"> 
+                        <audio id=audioRecord></audio>
+			</p> 
+                      <!-- recording list -->
+                      <ul id='recordingsList' style="list-style-type:none;">
+                      </ul>
+                    </div>
+                  </div>
+		  <font size=-1>
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			  Note - language represents the language you want to be returned to you. <br/>
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			  So for example, if you select language = 'English' but you say say something <br/>
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			  in French, it will attempt to translate from French to English. This tends to<br/> 
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			  work better using the xcribe model.
+		  </font>
+                </p>
+            </div>
+            <div class="col-lg-6">
+		    <div style="align:left;">
+		    <img height=200px src="./assets/img/mic004.png">
+		    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TTS -->
+    <div class="container">
+        <div class="row d-flex align-items-center py-5">
+            <div class="col-lg-6">
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<img height=125px src="./assets/img/speaker002.png">
+            </div>
+            <div class="col-lg-6 text-start">
+                <h1 class="h2 py-5 text-primary typo-space-line">Test TTS</h1>
+                <p class="light-300">
+                  <div>
+                    <div style="display: table; margin: auto;border:1px solid gray;padding-right:20px;padding-top:20px;">
+		    &nbsp; &nbsp; <b>Took: </b> <span id=tts_timer>0</span>ms
+                      <p style="padding-left:20px;">
+                        <font size=+1><b>What to say: </b></font>
+			<input id=usr_txt type=text size=40>
+			<br/><br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button onclick="return(post_text(document.getElementById('usr_txt').value));"> Speak </button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+			voice1:<input checked=checked type=radio name=fvoice id="fvoice1" value="voice1">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+		        voice2:<input type=radio name=fvoice id="fvoice2" value="voice2">	
+                      </p>
+                    </div>
+                  </div>
+		  <br/>
+		  <font size=-1>Note: response times will fluctuate based on activity. For example, your second request will be faster than your first if the system was inactive before your request. This is due to the on-demand nature of the instances currently being used. Average response times should be around 2-3 seconds for most requests. The javascript interface (which this page uses) is also slower as it needs to convert the audio from an ogg variable speed container to the format required by the PriVox APIs. In general, using the smaller models STT response times average about 1-2 seconds (depending on input size) and TTS takes about 1-2 seconds to render a typical sentence. To view current QSS capacity of the network see the <a href="/about">about</a> page.</font>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
